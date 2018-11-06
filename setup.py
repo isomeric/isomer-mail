@@ -43,7 +43,7 @@ This software package is a plugin module for isomer.
       install_requires=[
           'hfos>=1.2.0'
       ],
-      entry_points="""[hfos.components]
+      entry_points="""[isomer.components]
     mail-receiver=hfos.mail.receiver:MailReceiver
     mail-transmitter=hfos.mail.transmitter:MailTransmitter
     """,

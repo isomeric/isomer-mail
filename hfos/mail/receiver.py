@@ -30,8 +30,8 @@ Module MailReceiver
 
 """
 
-from hfos.component import ConfigurableComponent, handler
-from hfos.logger import hfoslog, events, verbose, debug, warn, critical, error, hilight
+from isomer.component import ConfigurableComponent, handler
+from isomer.logger import isolog, events, verbose, debug, warn, critical, error, hilight
 
 
 class MailReceiver(ConfigurableComponent):

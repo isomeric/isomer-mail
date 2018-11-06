@@ -17,9 +17,9 @@
 #
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-from hfos.database import objectmodels
-from hfos.debugger import cli_register_event
-from hfos.logger import verbose, error
+from isomer.database import objectmodels
+from isomer.debugger import cli_register_event
+from isomer.logger import verbose, error
 
 __author__ = "Heiko 'riot' Weinen"
 __license__ = "AGPLv3"
@@ -39,9 +39,9 @@ from smtplib import SMTP, SMTP_SSL
 from socket import timeout
 from pystache import render
 
-from hfos.component import ConfigurableComponent, handler
+from isomer.component import ConfigurableComponent, handler
 
-from hfos.mail import send_mail
+from isomer.mail import send_mail
 
 
 def send_mail_worker(config, mail, event):
