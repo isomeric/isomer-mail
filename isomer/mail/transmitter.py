@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
 
-# HFOS - Hackerfleet Operating System
-# ===================================
+# Isomer - The distributed application framework
+# ==============================================
 # Copyright (C) 2011-2018 Heiko 'riot' Weinen <riot@c-base.org> and others.
 #
 # This program is free software: you can redistribute it and/or modify
@@ -108,6 +108,7 @@ class MailTransmitter(ConfigurableComponent):
                 }
             ],
             'items': {
+                'type': 'object',
                 'properties': {
                     'name': {
                         'type': 'string',
@@ -169,6 +170,29 @@ class MailTransmitter(ConfigurableComponent):
             }
         }
     }
+
+    configform = [
+        'mail_send',
+        'default_account',
+        {
+            'key': 'accounts',
+            'add': "Add account",
+            'style': {
+                'add': "btn-success"
+            },
+            'items': [
+                'accounts[].name',
+                'accounts[].server',
+                'accounts[].port',
+                'accounts[].ssl',
+                'accounts[].tls',
+                'accounts[].protocol',
+                'accounts[].mail_from',
+                'accounts[].username',
+                'accounts[].password'
+            ]
+        },
+    ]
 
     def __init__(self, *args, **kwargs):
         super(MailTransmitter, self).__init__('MAILTX', *args, **kwargs)
