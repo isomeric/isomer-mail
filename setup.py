@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
 
-# HFOS - Hackerfleet Operating System
-# ===================================
+# Isomer - The distributed application framework
+# ==============================================
 # Copyright (C) 2011-2018 Heiko 'riot' Weinen <riot@c-base.org> and others.
 #
 # This program is free software: you can redistribute it and/or modify
@@ -26,12 +26,12 @@ from setuptools import setup, find_packages
 setup(name="isomer-mail",
       version="0.0.1",
       description="isomer-mail",
-      author="Hackerfleet Community",
+      author="Isomer Community",
       author_email="riot@c-base.org",
-      url="https://github.com/hackerfleet/isomer-mail",
+      url="https://github.com/isomeric/isomer-mail",
       license="GNU Affero General Public License v3",
       packages=find_packages(),
-      long_description="""isomer - Mail support
+      long_description="""Isomer - Mail support
 =====================
 
 E-mail support package for isomer instances.
@@ -41,11 +41,11 @@ This software package is a plugin module for isomer.
 """,
       dependency_links=[],
       install_requires=[
-          'hfos>=1.2.0'
+          'isomer>=1.2.0'
       ],
       entry_points="""[isomer.components]
-    mail-receiver=hfos.mail.receiver:MailReceiver
-    mail-transmitter=hfos.mail.transmitter:MailTransmitter
+    mail-receiver=isomer.mail.receiver:MailReceiver
+    mail-transmitter=isomer.mail.transmitter:MailTransmitter
     """,
       test_suite="tests.main.main",
       )
