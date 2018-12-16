@@ -23,29 +23,31 @@ __license__ = "AGPLv3"
 
 from setuptools import setup, find_packages
 
-setup(name="isomer-mail",
-      version="0.0.1",
-      description="isomer-mail",
-      author="Isomer Community",
-      author_email="riot@c-base.org",
-      url="https://github.com/isomeric/isomer-mail",
-      license="GNU Affero General Public License v3",
-      packages=find_packages(),
-      long_description="""Isomer - Mail support
+setup(
+    name="isomer-mail",
+    version="0.0.1",
+    description="isomer-mail",
+    author="Isomer Community",
+    author_email="riot@c-base.org",
+    url="https://github.com/isomeric/isomer-mail",
+    license="GNU Affero General Public License v3",
+    packages=find_packages(),
+    long_description="""Isomer - Mail support
 =====================
 
 E-mail support package for isomer instances.
+
 Contains mail receiver and transmitter components.
 
 This software package is a plugin module for isomer.
 """,
-      dependency_links=[],
-      install_requires=[
-          'isomer>=1.2.0'
-      ],
-      entry_points="""[isomer.components]
+    dependency_links=[],
+    install_requires=[
+        'isomer>=1.0.0'
+    ],
+    entry_points="""[isomer.components]
     mail-receiver=isomer.mail.receiver:MailReceiver
     mail-transmitter=isomer.mail.transmitter:MailTransmitter
     """,
-      test_suite="tests.main.main",
-      )
+    test_suite="tests.main.main",
+)
