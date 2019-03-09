@@ -3,7 +3,7 @@
 
 # Isomer - The distributed application framework
 # ==============================================
-# Copyright (C) 2011-2018 Heiko 'riot' Weinen <riot@c-base.org> and others.
+# Copyright (C) 2011-2019 Heiko 'riot' Weinen <riot@c-base.org> and others.
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as published by
@@ -31,6 +31,22 @@ setup(
     author_email="riot@c-base.org",
     url="https://github.com/isomeric/isomer-mail",
     license="GNU Affero General Public License v3",
+    classifiers=[
+        'Development Status :: 3 - Alpha',
+        'Environment :: Web Environment',
+        'Framework :: Isomer :: 1',
+        'License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)',
+        'Operating System :: Linux',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3 :: Only',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: Implementation :: PyPy',
+        'Programming Language :: Python :: Implementation :: CPython',
+        'Topic :: Communications :: Email'
+    ],
     packages=find_packages(),
     long_description="""Isomer - Mail support
 =====================
@@ -43,7 +59,7 @@ This software package is a plugin module for isomer.
 """,
     dependency_links=[],
     install_requires=[
-        'isomer>=1.0.0'
+        'isomer>=1.0'
     ],
     entry_points="""[isomer.components]
     mail-receiver=isomer.mail.receiver:MailReceiver
