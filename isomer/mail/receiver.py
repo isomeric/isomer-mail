@@ -30,15 +30,15 @@ Module MailReceiver
 
 """
 
-from isomer.component import ConfigurableComponent, handler
-from isomer.logger import isolog, events, verbose, debug, warn, critical, error, hilight
+from isomer.component import ConfigurableComponent
+from isomer.schemata.defaultform import fieldset
 
 
 class MailReceiver(ConfigurableComponent):
     """Receives mails on multiple accounts"""
 
     configprops = {
-        'receive_mail': {
+        'mail_receive': {
             'type': 'boolean',
             'title': 'Receive mail',
             'description': 'Poll configured accounts for new mail',
@@ -46,7 +46,17 @@ class MailReceiver(ConfigurableComponent):
         },
         'accounts': {
             'type': 'array',
+            'default': [
+                {
+                    'name': 'localhost',
+                    'server': 'localhost',
+                    'port': 143,
+                    'ssl': False,
+                    'tls': True
+                }
+            ],
             'items': {
+                'type': 'object',
                 'properties': {
                     'server': {
                         'type': 'string',
@@ -54,7 +64,27 @@ class MailReceiver(ConfigurableComponent):
                         'description': 'Mail server to receive emails from',
                         'default': 'localhost'
                     },
-                    'server_port': {
+                    'use_fetchmail': {
+                        'type': 'boolean',
+                        'title': 'Use fetchmail',
+                        'description': 'Instead of talking to a mail server directly,'
+                                       'use fetchmail',
+                        'default': False
+                    },
+                    'fetchmail_extra_arguments': {
+                        'type': 'string',
+                        'title': 'Fetchmail arguments',
+                        'description':
+                            'Use these extra arguments to control fetchmail',
+                        'default': ''
+                    },
+                    'fetchmail_binary': {
+                        'type': 'string',
+                        'title': 'Fetchmail binary to use',
+                        'description': 'Specify the executable to fetch mail with',
+                        'default': '/usr/bin/fetchmail'
+                    },
+                    'port': {
                         'type': 'integer',
                         'title': 'Mail server port',
                         'description': 'Mail server port to connect to',
@@ -91,11 +121,44 @@ class MailReceiver(ConfigurableComponent):
                             'type': 'password'
                         }
                     },
-
                 }
             }
         }
     }
+
+    configform = [
+        'mail_receive',
+        {
+            'key': 'accounts',
+            'add': "Add account",
+            'style': {
+                'add': "btn-success"
+            },
+            'items': [
+                'accounts[].name',
+                'accounts[].server',
+                'accounts[].use_fetchmail',
+                fieldset('Fetchmail details', [
+                    'accounts[].fetchmail_extra_arguments',
+                    'accounts[].fetchmail_binary',
+                ], options={
+                    'condition': '$ctrl.model.accounts[arrayIndex].use_fetchmail == true'
+                }),
+                fieldset('SMTP account details', [
+                    'accounts[].server',
+                    'accounts[].port',
+                    'accounts[].ssl',
+                    'accounts[].tls',
+                    'accounts[].protocol',
+                    'accounts[].username',
+                    'accounts[].password'
+                ], options={
+                    'condition':
+                        '$ctrl.model.accounts[arrayIndex].use_fetchmail == false'
+                })
+            ]
+        },
+    ]
 
     def __init__(self, *args, **kwargs):
         super(MailReceiver, self).__init__('MAILRX', *args, **kwargs)
