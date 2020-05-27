@@ -48,6 +48,8 @@ setup(
         'Topic :: Communications :: Email'
     ],
     packages=find_packages(),
+    package_data={'isomer-mail': ['../docs/*', '../frontend/*']},
+    include_package_data=True,
     long_description="""Isomer - Mail support
 =====================
 
@@ -67,3 +69,5 @@ This software package is a plugin module for isomer.
     """,
     test_suite="tests.main.main",
 )
+
+
