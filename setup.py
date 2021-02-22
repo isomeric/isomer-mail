@@ -21,11 +21,11 @@
 __author__ = "Heiko 'riot' Weinen"
 __license__ = "AGPLv3"
 
-from setuptools import setup, find_packages
+from setuptools import setup, find_namespace_packages
 
 setup(
     name="isomer-mail",
-    version="0.0.1",
+    version="0.0.2",
     description="isomer-mail",
     author="Isomer Community",
     author_email="riot@c-base.org",
@@ -47,7 +47,7 @@ setup(
         'Programming Language :: Python :: Implementation :: CPython',
         'Topic :: Communications :: Email'
     ],
-    packages=find_packages(),
+    packages=find_namespace_packages(),
     package_data={'isomer-mail': ['../docs/*', '../frontend/*']},
     include_package_data=True,
     long_description="""Isomer - Mail support
@@ -61,7 +61,7 @@ This software package is a plugin module for isomer.
 """,
     dependency_links=[],
     install_requires=[
-        'isomer>=1.0'
+        'isomer>=1.1.4'
     ],
     entry_points="""[isomer.components]
     mail-receiver=isomer.mail.receiver:MailReceiver
